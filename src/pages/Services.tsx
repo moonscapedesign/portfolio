@@ -31,7 +31,7 @@ const services = [
 
 export function Services() {
     return (
-        <div className="min-h-screen pt-32 pb-20 px-6 bg-[#1A1A1A] text-[#F0F0E6]">
+        <div className="min-h-screen pt-32 pb-20 px-6 bg-[#0A0A0A] text-white">
             <div className="max-w-6xl mx-auto">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -40,7 +40,7 @@ export function Services() {
                 >
                     <h1 className="text-6xl md:text-8xl font-bold tracking-tight mb-8">
                         My<br />
-                        <span className="text-[#7B61FF]">Services.</span>
+                        <span className="text-[#9B8AFF]">Services.</span>
                     </h1>
                     <p className="text-2xl opacity-60 max-w-2xl leading-relaxed">
                         A comprehensive suite of design and development services tailored to helping your business grow.
@@ -55,9 +55,9 @@ export function Services() {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ delay: index * 0.1 }}
                             viewport={{ once: true }}
-                            className="group py-12 border-t border-[#F0F0E6]/10 flex flex-col md:flex-row md:items-start gap-8 md:gap-20 cursor-default hover:bg-white/5 transition-colors px-4 -mx-4 rounded-3xl"
+                            className="group py-12 border-t border-white/10 flex flex-col md:flex-row md:items-start gap-8 md:gap-20 cursor-default hover:bg-white/5 transition-colors px-4 -mx-4 rounded-3xl"
                         >
-                            <span className="text-sm font-mono text-[#7B61FF] pt-2">{service.id}</span>
+                            <span className="text-sm font-mono text-[#9B8AFF] pt-2">{service.id}</span>
 
                             <div className="flex-1">
                                 <h3 className="text-4xl md:text-5xl font-bold mb-4 group-hover:translate-x-4 transition-transform duration-300">
@@ -68,7 +68,7 @@ export function Services() {
                                 </p>
                             </div>
 
-                            <div className="flex items-center justify-center w-16 h-16 rounded-full border border-[#F0F0E6]/20 text-[#F0F0E6] group-hover:bg-[#7B61FF] group-hover:border-[#7B61FF] transition-all duration-300">
+                            <div className="flex items-center justify-center w-16 h-16 rounded-full border border-white/20 text-white group-hover:bg-[#9B8AFF] group-hover:border-[#9B8AFF] transition-all duration-300">
                                 <service.icon className="w-6 h-6" />
                             </div>
                         </motion.div>
@@ -78,10 +78,10 @@ export function Services() {
                 <motion.div
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
-                    className="mt-24 p-12 bg-[#7B61FF] rounded-[3rem] text-center"
+                    className="mt-24 p-12 bg-[#111111] border border-white/10 rounded-[3rem] text-center"
                 >
                     <h2 className="text-4xl md:text-5xl font-bold mb-8 text-white">Ready to start a project?</h2>
-                    <Button className="bg-white text-[#7B61FF] hover:bg-[#F0F0E6] h-14 px-10 rounded-full text-lg font-semibold">
+                    <Button className="bg-white text-[#0A0A0A] hover:bg-[#9B8AFF] hover:text-white h-14 px-10 rounded-full text-lg font-semibold">
                         Let's Talk <ArrowRight className="ml-2 w-5 h-5" />
                     </Button>
                 </motion.div>

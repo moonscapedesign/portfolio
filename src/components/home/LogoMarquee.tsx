@@ -11,12 +11,12 @@ export function LogoMarquee() {
     ]
 
     return (
-        <section className="py-5 bg-[#F5F5F0] overflow-hidden border-y border-[#1A1A1A]/5">
+        <section className="py-5 bg-[#0A0A0A] overflow-hidden border-y border-white/5">
             <div className="flex">
                 <div className="flex animate-scroll whitespace-nowrap">
                     {[...clients, ...clients].map((client, index) => (
                         <div key={index} className="mx-8 md:mx-12 flex items-center">
-                            <span className="text-sm font-medium text-[#1A1A1A]/40 tracking-wider uppercase">{client}</span>
+                            <span className="text-sm font-medium text-white/30 tracking-wider uppercase">{client}</span>
                         </div>
                     ))}
                 </div>
