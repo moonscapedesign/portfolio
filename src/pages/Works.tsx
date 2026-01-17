@@ -1,14 +1,28 @@
-import { useRef } from "react"
+import { useRef, useEffect, useState } from "react"
 import { motion } from "framer-motion"
-import { ArrowUpRight } from "lucide-react"
+import { ArrowUpRight, Loader2 } from "lucide-react"
 import { Link } from "react-router-dom"
-import { getAllCaseStudies } from "../lib/content"
-
-
+import { getAllCaseStudies, type CaseStudy } from "../lib/content"
 
 export function Works() {
     const containerRef = useRef(null)
-    const projects = getAllCaseStudies()
+    const [projects, setProjects] = useState<CaseStudy[]>([])
+    const [loading, setLoading] = useState(true)
+
+    useEffect(() => {
+        getAllCaseStudies().then(studies => {
+            setProjects(studies)
+            setLoading(false)
+        })
+    }, [])
+
+    if (loading) {
+        return (
+            <div className="min-h-screen flex items-center justify-center bg-[#0A0A0A]">
+                <Loader2 className="w-8 h-8 text-[#9B8AFF] animate-spin" />
+            </div>
+        )
+    }
 
     return (
         <div ref={containerRef} className="min-h-screen pt-32 pb-20 px-6 bg-[#0A0A0A]">

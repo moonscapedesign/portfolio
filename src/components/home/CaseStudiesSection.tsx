@@ -2,14 +2,21 @@ import { Button } from "../ui/button"
 import { Link } from "react-router-dom"
 import { motion } from "framer-motion"
 import { ArrowUpRight } from "lucide-react"
-import { getAllCaseStudies } from "../../lib/content"
+import { getAllCaseStudies, type CaseStudy } from "../../lib/content"
+import { useEffect, useState } from "react"
 
 interface CaseStudiesSectionProps {
     limit?: number
 }
 
 export function CaseStudiesSection({ limit = 2 }: CaseStudiesSectionProps) {
-    const caseStudies = getAllCaseStudies().slice(0, limit)
+    const [caseStudies, setCaseStudies] = useState<CaseStudy[]>([])
+
+    useEffect(() => {
+        getAllCaseStudies().then(studies => {
+            setCaseStudies(studies.slice(0, limit))
+        })
+    }, [limit])
 
     return (
         <section className="py-20 md:py-28 px-6 md:px-12 lg:px-16 bg-[#0A0A0A]">

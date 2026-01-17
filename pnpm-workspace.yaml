@@ -1,5 +1,8 @@
 packages: []
+
+autoInstallPeers: false
+
 onlyBuiltDependencies:
+  - canvas
   - esbuild
   - msw
-autoInstallPeers: false
