@@ -24,7 +24,7 @@ const testimonials = [
 
 export function ContentSection() {
     return (
-        <section className="py-20 md:py-28 px-6 md:px-12 lg:px-16 bg-[#1A1A1A]">
+        <section className="py-20 md:py-28 px-6 md:px-12 lg:px-16 bg-[#0A0A0A]">
             <div className="max-w-6xl mx-auto">
                 {/* Section Header */}
                 <motion.div
@@ -33,7 +33,7 @@ export function ContentSection() {
                     viewport={{ once: true }}
                     className="text-center mb-14"
                 >
-                    <p className="text-[13px] font-medium text-[#7B61FF] uppercase tracking-wider mb-3">
+                    <p className="text-[13px] font-medium text-[#9B8AFF] uppercase tracking-wider mb-3">
                         Testimonials
                     </p>
                     <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold leading-[1.15] tracking-[-0.01em] text-white">
@@ -52,7 +52,7 @@ export function ContentSection() {
                             transition={{ delay: index * 0.1 }}
                             className="bg-white/5 border border-white/10 p-6 hover:bg-white/10 transition-colors duration-300"
                         >
-                            <Quote className="w-8 h-8 text-[#7B61FF] mb-4" />
+                            <Quote className="w-8 h-8 text-[#9B8AFF] mb-4" />
                             <p className="text-white/70 text-[14px] leading-[1.7] mb-6">
                                 {testimonial.quote}
                             </p>
