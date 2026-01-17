@@ -2,3 +2,4 @@ packages: []
 onlyBuiltDependencies:
   - esbuild
   - msw
+autoInstallPeers: false
