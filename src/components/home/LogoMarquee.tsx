@@ -1,14 +1,8 @@
+import logosRaw from '../../../logos.txt?raw'
+
+const clients = logosRaw.split('\n').map(line => line.trim()).filter(Boolean)
+
 export function LogoMarquee() {
-    const clients = [
-        "TechStart",
-        "Design Co",
-        "Venture Labs",
-        "Creative Studio",
-        "Digital First",
-        "Brand Agency",
-        "StartupXYZ",
-        "Innovation Inc"
-    ]
 
     return (
         <section className="py-5 bg-[#0A0A0A] overflow-hidden border-y border-white/5">
