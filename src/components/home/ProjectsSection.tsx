@@ -1,6 +1,7 @@
 import { Button } from "../ui/button"
 import { Link } from "react-router-dom"
 import { motion } from "framer-motion"
+import { ArrowUpRight } from "lucide-react"
 
 const projects = [
     {
@@ -27,54 +28,53 @@ const projects = [
 
 export function ProjectsSection() {
     return (
-        <section className="bg-[#F5F5F0]">
-            <div className="flex flex-col lg:flex-row">
-                {/* Left Column - Purple Box */}
-                <div className="w-full lg:w-[40%] relative">
-                    <div className="bg-[#7B61FF] p-8 md:p-10 text-white h-full flex flex-col justify-center relative overflow-hidden min-h-[320px]">
-                        {/* Wireframe decoration */}
-                        <svg className="absolute bottom-8 left-8 right-8 h-[120px] text-white/20" viewBox="0 0 200 80" preserveAspectRatio="xMidYMid meet">
-                            <path d="M0,40 Q30,15 60,40 T120,40 T180,40 T240,40" fill="none" stroke="currentColor" strokeWidth="1"/>
-                            <path d="M0,50 Q30,25 60,50 T120,50 T180,50 T240,50" fill="none" stroke="currentColor" strokeWidth="1"/>
-                            <ellipse cx="100" cy="45" rx="80" ry="30" fill="none" stroke="currentColor" strokeWidth="1"/>
-                        </svg>
-                        
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            className="relative z-10"
-                        >
-                            <h2 className="text-xl md:text-2xl lg:text-3xl font-bold leading-[1.2] tracking-[-0.01em] mb-5">
-                                Selected work from recent projects.
-                            </h2>
-                            <Button asChild variant="outline" className="border-white/80 text-white hover:bg-white hover:text-[#7B61FF] rounded-none px-5 h-10 text-[13px] font-medium transition-all duration-200">
-                                <Link to="/works">View all projects</Link>
-                            </Button>
-                        </motion.div>
+        <section className="py-20 md:py-28 px-6 md:px-12 lg:px-16 bg-[#F5F5F0]">
+            <div className="max-w-6xl mx-auto">
+                {/* Section Header */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12"
+                >
+                    <div>
+                        <p className="text-[13px] font-medium text-[#7B61FF] uppercase tracking-wider mb-3">
+                            Selected Work
+                        </p>
+                        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold leading-[1.15] tracking-[-0.01em] text-[#1A1A1A]">
+                            Recent projects
+                        </h2>
                     </div>
-                </div>
+                    <Button asChild variant="outline" className="border-[#1A1A1A]/20 text-[#1A1A1A] hover:bg-[#1A1A1A] hover:text-white rounded-none px-5 h-10 text-[13px] font-medium transition-all duration-200 w-fit">
+                        <Link to="/works">View all projects</Link>
+                    </Button>
+                </motion.div>
 
-                {/* Right Column - Project Images Grid */}
-                <div className="w-full lg:w-[60%] grid grid-cols-2">
+                {/* Projects Grid */}
+                <div className="grid md:grid-cols-2 gap-6">
                     {projects.map((project, index) => (
                         <motion.div 
                             key={index}
-                            initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 }}
-                            className="aspect-[4/3] overflow-hidden relative group cursor-pointer"
+                            className="group cursor-pointer"
                         >
-                            <img 
-                                src={project.image} 
-                                alt={project.title}
-                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                            />
-                            <div className="absolute inset-0 bg-[#1A1A1A]/0 group-hover:bg-[#1A1A1A]/60 transition-colors duration-300 flex items-end p-8">
-                                <div className="translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                                    <p className="text-white/70 text-sm uppercase tracking-wider mb-2">{project.category}</p>
-                                    <p className="text-white font-semibold text-lg">{project.title}</p>
+                            <div className="aspect-[4/3] overflow-hidden relative mb-4">
+                                <img 
+                                    src={project.image} 
+                                    alt={project.title}
+                                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                />
+                                <div className="absolute top-4 right-4 w-10 h-10 bg-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    <ArrowUpRight className="w-5 h-5 text-[#1A1A1A]" />
+                                </div>
+                            </div>
+                            <div className="flex items-center justify-between">
+                                <div>
+                                    <p className="text-[11px] text-[#7B61FF] uppercase tracking-wider mb-1">{project.category}</p>
+                                    <p className="text-[#1A1A1A] font-semibold text-base">{project.title}</p>
                                 </div>
                             </div>
                         </motion.div>

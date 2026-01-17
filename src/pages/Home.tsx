@@ -10,10 +10,9 @@ export function Home() {
         <main>
             <Hero />
             <LogoMarquee />
-            <ContentSection />
             <ProjectsSection />
-            <LogoMarquee />
             <FeaturesSection />
+            <ContentSection />
             <CTASection />
         </main>
     )
