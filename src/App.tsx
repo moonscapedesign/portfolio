@@ -55,7 +55,7 @@ function Layout() {
 
 function App() {
     return (
-        <Router>
+        <Router basename="/portfolio">
             <Layout />
         </Router>
     )
