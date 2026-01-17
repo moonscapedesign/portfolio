@@ -179,6 +179,8 @@ function CalendarDayButton({
   modifiers,
   ...props
 }: React.ComponentProps<typeof DayButton>) {
+  const { onDrag, ...safeProps } = props as any
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars   
   const defaultClassNames = getDefaultClassNames()
 
   const ref = React.useRef<HTMLButtonElement>(null)
@@ -205,7 +207,7 @@ function CalendarDayButton({
         defaultClassNames.day,
         className
       )}
-      {...props}
+      {...safeProps}
     />
   )
 }

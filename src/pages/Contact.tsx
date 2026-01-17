@@ -23,13 +23,13 @@ export function Contact() {
                         </p>
 
                         <div className="space-y-8">
-                            <a href="mailto:hello@brayden.design" className="flex items-center gap-4 group">
+                            <a href="mailto:b.moonscapedesign@gmail.com" className="flex items-center gap-4 group">
                                 <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-[#1A1A1A] group-hover:bg-[#7B61FF] group-hover:text-white transition-colors">
                                     <Mail className="w-5 h-5" />
                                 </div>
                                 <div>
                                     <p className="text-sm text-gray-500">Email me at</p>
-                                    <p className="text-lg font-medium">hello@brayden.design</p>
+                                    <p className="text-lg font-medium">b.moonscapedesign@gmail.com</p>
                                 </div>
                             </a>
 

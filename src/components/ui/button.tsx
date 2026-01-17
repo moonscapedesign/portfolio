@@ -1,51 +1,68 @@
-import { Button as ButtonPrimitive } from "@base-ui/react/button"
-import { cva, type VariantProps } from "class-variance-authority"
+import * as React from "react"
+import { cn } from "../../lib/utils"
+import { motion, type HTMLMotionProps } from "framer-motion"
 
-import { cn } from "@/lib/utils"
-
-const buttonVariants = cva(
-  "focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 rounded-none border border-transparent bg-clip-padding text-xs font-medium focus-visible:ring-1 aria-invalid:ring-1 [&_svg:not([class*='size-'])]:size-4 inline-flex items-center justify-center whitespace-nowrap transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none shrink-0 [&_svg]:shrink-0 outline-none group/button select-none",
-  {
-    variants: {
-      variant: {
-        default: "bg-primary text-primary-foreground [a]:hover:bg-primary/80",
-        outline: "border-border bg-background hover:bg-muted hover:text-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 aria-expanded:bg-muted aria-expanded:text-foreground",
-        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80 aria-expanded:bg-secondary aria-expanded:text-secondary-foreground",
-        ghost: "hover:bg-muted hover:text-foreground dark:hover:bg-muted/50 aria-expanded:bg-muted aria-expanded:text-foreground",
-        destructive: "bg-destructive/10 hover:bg-destructive/20 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/20 text-destructive focus-visible:border-destructive/40 dark:hover:bg-destructive/30",
-        link: "text-primary underline-offset-4 hover:underline",
-      },
-      size: {
-        default: "h-8 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
-        xs: "h-6 gap-1 rounded-none px-2 text-xs has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3",
-        sm: "h-7 gap-1 rounded-none px-2.5 has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3.5",
-        lg: "h-9 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-3 has-data-[icon=inline-start]:pl-3",
-        icon: "size-8",
-        "icon-xs": "size-6 rounded-none [&_svg:not([class*='size-'])]:size-3",
-        "icon-sm": "size-7 rounded-none",
-        "icon-lg": "size-9",
-      },
-    },
-    defaultVariants: {
-      variant: "default",
-      size: "default",
-    },
+// Define variants and sizes as constants for reuse and export
+export const buttonVariantsMap = {
+  variant: {
+    primary: "bg-[#7B61FF] text-white hover:bg-[#6A51E0] border border-transparent shadow-sm",
+    secondary: "bg-[#1A1A1A] text-white hover:bg-black border border-transparent shadow-sm",
+    outline: "bg-transparent text-[#1A1A1A] border border-[#1A1A1A]/20 hover:border-[#1A1A1A] hover:bg-[#1A1A1A]/5",
+    ghost: "bg-transparent text-[#1A1A1A] hover:bg-[#1A1A1A]/5",
+    default: "bg-[#7B61FF] text-white hover:bg-[#6A51E0] border border-transparent shadow-sm", // Alias for primary
+    destructive: "bg-red-500 text-white hover:bg-red-600", // Common Shadcn variant
+    link: "text-primary underline-offset-4 hover:underline",
+  },
+  size: {
+    default: "px-6 py-3 text-base h-12", // Map default to md-ish
+    sm: "px-4 py-2 text-sm",
+    md: "px-6 py-3 text-base h-12",
+    lg: "px-8 py-4 text-lg h-14",
+    icon: "p-2 w-10 h-10 flex items-center justify-center",
+    "icon-sm": "p-1 w-8 h-8 flex items-center justify-center", // Added for compatibility
+    "icon-xs": "p-0.5 w-6 h-6 flex items-center justify-center", // Added for compatibility
   }
-)
+}
 
-function Button({
-  className,
-  variant = "default",
-  size = "default",
-  ...props
-}: ButtonPrimitive.Props & VariantProps<typeof buttonVariants>) {
-  return (
-    <ButtonPrimitive
-      data-slot="button"
-      className={cn(buttonVariants({ variant, size, className }))}
-      {...props}
-    />
+// Helper to mimic cva's behavior for existing consumers
+export function buttonVariants({ variant = "default", size = "default", className = "" }: { variant?: keyof typeof buttonVariantsMap.variant, size?: keyof typeof buttonVariantsMap.size, className?: string } = {}) {
+  return cn(
+    "inline-flex items-center justify-center rounded-full font-medium transition-colors focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#7B61FF]/30 disabled:pointer-events-none disabled:opacity-50",
+    buttonVariantsMap.variant[variant] || buttonVariantsMap.variant.default,
+    buttonVariantsMap.size[size] || buttonVariantsMap.size.default,
+    className
   )
 }
 
-export { Button, buttonVariants }
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: keyof typeof buttonVariantsMap.variant
+  size?: keyof typeof buttonVariantsMap.size
+  asChild?: boolean
+}
+
+// Combine HTMLButtonElement props with MotionProps
+type CombinedButtonProps = ButtonProps & HTMLMotionProps<"button">
+
+const Button = React.forwardRef<HTMLButtonElement, CombinedButtonProps>(
+  ({ className, variant = 'primary', size = 'default', ...props }, ref) => {
+
+    // Normalize variant/size if passed as "default" (common in Shadcn) to match our map keys
+    const finalVariant = variant || 'default'
+    const finalSize = size || 'default'
+
+    return (
+      <motion.button
+        ref={ref}
+        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 0.98 }}
+        className={cn(
+          buttonVariants({ variant: finalVariant, size: finalSize, className })
+        )}
+        {...props}
+      />
+    )
+  }
+)
+Button.displayName = "Button"
+
+export { Button }

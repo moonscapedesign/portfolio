@@ -1,5 +1,5 @@
 import { motion } from "framer-motion"
-import { ArrowRight, Circle, Code, Database, Layout, Smartphone } from "lucide-react"
+import { ArrowRight, Code, Database, Layout, Smartphone } from "lucide-react"
 import { Button } from "../components/ui/button"
 
 const services = [

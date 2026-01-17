@@ -1,20 +1,10 @@
-import { useState, useEffect } from "react"
 import { Link, useLocation } from "react-router-dom"
 import { motion } from "framer-motion"
 import { Home, User, Briefcase, Film } from "lucide-react"
 import { cn } from "../../lib/utils"
 
 export function Navbar() {
-    const [scrolled, setScrolled] = useState(false)
     const location = useLocation()
-
-    useEffect(() => {
-        const handleScroll = () => {
-            setScrolled(window.scrollY > 50)
-        }
-        window.addEventListener("scroll", handleScroll)
-        return () => window.removeEventListener("scroll", handleScroll)
-    }, [])
 
     const navLinks = [
         { name: "Home", path: "/", icon: Home },
@@ -28,11 +18,12 @@ export function Navbar() {
             <nav
                 className={cn(
                     "pointer-events-auto flex items-center justify-between gap-2 px-2 py-2 transition-all duration-300",
-                    "bg-[#F0F0E6]/80 backdrop-blur-md shadow-sm border border-primary/5 rounded-full"
+                    "bg-[#F0F0E6]/90 backdrop-blur-md shadow-sm border border-primary/5 rounded-full",
+                    "max-w-[90vw] overflow-x-auto no-scrollbar" // Mobile responsiveness
                 )}
             >
                 <div className="flex items-center gap-1">
-                    <div className="w-10 h-10 rounded-full flex items-center justify-center text-primary">
+                    <div className="w-12 h-12 rounded-full flex items-center justify-center text-primary" aria-hidden="true">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-6 h-6">
                             <circle cx="12" cy="12" r="10" strokeDasharray="4 4" />
                             <circle cx="12" cy="12" r="4" />
@@ -46,12 +37,14 @@ export function Navbar() {
                             key={link.path}
                             to={link.path}
                             className={cn(
-                                "p-3 rounded-full transition-colors hover:bg-black/5 relative group",
+                                "p-3 md:p-4 rounded-full transition-colors hover:bg-black/5 relative group min-w-[48px] min-h-[48px] flex items-center justify-center", // Enhanced touch target
                                 location.pathname === link.path ? "text-primary bg-white shadow-sm" : "text-primary/60"
                             )}
                             title={link.name}
+                            aria-label={link.name}
+                            role="menuitem"
                         >
-                            <link.icon className="w-5 h-5" />
+                            <link.icon className="w-5 h-5 md:w-6 md:h-6" />
                             {location.pathname === link.path && (
                                 <motion.div layoutId="nav-pill" className="absolute inset-0 bg-white rounded-full z-[-1] shadow-sm" transition={{ type: "spring", bounce: 0.2, duration: 0.6 }} />
                             )}
