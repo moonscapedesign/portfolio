@@ -1,6 +1,5 @@
 import { Link, useLocation } from "react-router-dom"
 import { cn } from "../../lib/utils"
-import { Button } from "../ui/button"
 import { Menu } from "lucide-react"
 import { useState } from "react"
 
@@ -47,13 +46,6 @@ export function Navbar() {
                     ))}
                 </nav>
 
-                {/* CTA Button - Desktop */}
-                <div className="hidden md:block">
-                    <Button asChild className="bg-white hover:bg-white/90 text-[#0A0A0A] rounded-none h-11 px-7 text-[15px] font-medium transition-all duration-200">
-                        <Link to="/contact">Book a call</Link>
-                    </Button>
-                </div>
-
                 {/* Mobile Menu Button */}
                 <button
                     className="md:hidden p-2"
@@ -82,9 +74,6 @@ export function Navbar() {
                                 {link.name}
                             </Link>
                         ))}
-                        <Button asChild className="bg-white text-[#0A0A0A] rounded-none h-12 text-base font-medium mt-2">
-                            <Link to="/contact" onClick={() => setMobileMenuOpen(false)}>Book a call</Link>
-                        </Button>
                     </nav>
                 </div>
             )}
