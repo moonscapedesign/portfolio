@@ -2,6 +2,7 @@ import { Button } from "../ui/button"
 import { ArrowRight } from "lucide-react"
 import { motion } from "framer-motion"
 import { Link } from "react-router-dom"
+import portraitImg from "@/assets/portrait.png"
 
 export function Hero() {
     return (
@@ -52,7 +53,7 @@ export function Hero() {
                             
                             <div className="relative z-10 ml-auto w-full max-w-[280px]">
                                 <img
-                                    src="/src/assets/portrait.png"
+                                    src={portraitImg}
                                     alt="Bridie - Visual Communicator"
                                     className="w-full h-auto object-cover grayscale"
                                 />

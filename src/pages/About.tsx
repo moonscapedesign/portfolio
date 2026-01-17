@@ -1,5 +1,6 @@
 import { motion } from "framer-motion"
 import { Button } from "../components/ui/button"
+import portraitImg from "@/assets/portrait.png"
 
 export function About() {
     return (
@@ -13,7 +14,7 @@ export function About() {
                     className="w-full md:w-1/3 aspect-[3/4] rounded-t-full bg-gray-300 overflow-hidden relative grayscale"
                 >
                     <img
-                        src="/src/assets/portrait.png"
+                        src={portraitImg}
                         alt="Portrait"
                         className="w-full h-full object-cover"
                     />
@@ -31,7 +32,7 @@ export function About() {
                         I’m a visual communicator based in the beautiful Yarra Valley, Victoria. I believe that great design is about problem-solving and bringing ideas to life.
                     </p>
                     <div className="flex gap-4">
-                        <a href="/BridieMoon_Resume.pdf" download="BridieMoon_Resume.pdf">
+                        <a href={`${import.meta.env.BASE_URL}BridieMoon_Resume.pdf`} download="BridieMoon_Resume.pdf">
                             <Button className="h-12 px-8 bg-white text-[#0A0A0A] hover:bg-[#9B8AFF] hover:text-white rounded-none">
                                 Download CV
                             </Button>
