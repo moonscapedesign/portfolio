@@ -11,6 +11,7 @@ export function Navbar() {
         { name: "Home", path: "/" },
         { name: "About", path: "/about" },
         { name: "Works", path: "/works" },
+        { name: "Gallery", path: "/gallery" },
         { name: "Services", path: "/services" },
         { name: "Contact", path: "/contact" },
     ]
@@ -29,7 +30,7 @@ export function Navbar() {
                 </Link>
 
                 {/* Nav Links - Desktop */}
-                <nav className="hidden md:flex items-center gap-8">
+                <nav className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
                     {navLinks.map((link) => (
                         <Link
                             key={link.path}
