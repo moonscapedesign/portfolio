@@ -48,7 +48,7 @@ export function CaseStudy() {
             <div className="max-w-4xl mx-auto px-6 py-20">
                 <article className="prose prose-lg max-w-none prose-invert prose-headings:font-bold prose-h1:text-3xl prose-h2:text-2xl prose-p:text-white/60 prose-img:rounded-[2rem] prose-img:shadow-xl">
                     <ReactMarkdown components={{
-                        img: ({ node, ...props }) => <img {...props} className="w-full h-auto object-cover rounded-[2rem] shadow-xl my-8" />
+                        img: ({ ...props }) => <img {...props} className="w-full h-auto object-cover rounded-[2rem] shadow-xl my-8" />
                     }}>
                         {project.content}
                     </ReactMarkdown>

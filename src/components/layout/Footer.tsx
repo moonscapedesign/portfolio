@@ -1,31 +1,34 @@
 import { Link } from "react-router-dom"
-import { Button } from "../ui/button"
-import { ArrowUpRight } from "lucide-react"
 
 export function Footer() {
     return (
-        <footer className="bg-primary text-white pt-20 pb-10 px-6">
-            <div className="max-w-5xl mx-auto flex flex-col gap-10">
-
-                {/* Top Section */}
-                <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-                    <h2 className="text-4xl md:text-5xl font-bold max-w-md leading-tight">
-                        Let's work together.
-                    </h2>
-                    <Button variant="outline" size="lg" className="rounded-full gap-2 border-white/20 text-white hover:bg-white/10 hover:text-white">
-                        Get in touch <ArrowUpRight className="w-4 h-4" />
-                    </Button>
-                </div>
-
-                <div className="h-px bg-white/10 w-full my-8" />
-
-                {/* Bottom Section */}
-                <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-sm text-white/50">
-                    <p>© 2026 Moonscape Designs. All rights reserved.</p>
-                    <div className="flex gap-6">
-                        <Link to="#" className="hover:text-white transition-colors">Twitter</Link>
-                        <a href="https://www.linkedin.com/in/bridiemoon03/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">LinkedIn</a>
-                        <a href="https://www.instagram.com/moonscape_design_/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Instagram</a>
+        <footer>
+            {/* Footer */}
+            <div className="border-t border-white/10 py-8 px-6 md:px-12 lg:px-16">
+                <div className="max-w-6xl mx-auto">
+                    <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+                        {/* Logo & Copyright */}
+                        <div className="flex items-center gap-3">
+                            <span className="font-semibold text-[15px] text-white">Moonscape Designs</span>
+                            <span className="text-white/30">•</span>
+                            <span className="text-white/40 text-[13px]">© 2026</span>
+                        </div>
+                        
+                        {/* Navigation */}
+                        <nav className="flex flex-wrap justify-center gap-6 text-[13px] text-white/50">
+                            <Link to="/" className="hover:text-[#9B8AFF] transition-colors">Home</Link>
+                            <Link to="/about" className="hover:text-[#9B8AFF] transition-colors">About</Link>
+                            <Link to="/works" className="hover:text-[#9B8AFF] transition-colors">Works</Link>
+                            <Link to="/services" className="hover:text-[#9B8AFF] transition-colors">Services</Link>
+                            <Link to="/contact" className="hover:text-[#9B8AFF] transition-colors">Contact</Link>
+                        </nav>
+                        
+                        {/* Social */}
+                        <div className="flex gap-5 text-white/40 text-[13px]">
+                            <a href="#" className="hover:text-[#9B8AFF] transition-colors">Twitter</a>
+                            <a href="#" className="hover:text-[#9B8AFF] transition-colors">LinkedIn</a>
+                            <a href="#" className="hover:text-[#9B8AFF] transition-colors">Instagram</a>
+                        </div>
                     </div>
                 </div>
             </div>
