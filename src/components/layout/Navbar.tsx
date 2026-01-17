@@ -1,12 +1,10 @@
 import { useState, useEffect } from "react"
 import { Link, useLocation } from "react-router-dom"
-import { motion, AnimatePresence } from "framer-motion"
-import { Menu, X, ArrowRight } from "lucide-react"
-import { Button } from "../ui/button"
+import { motion } from "framer-motion"
+import { Home, User, Briefcase, Film } from "lucide-react"
 import { cn } from "../../lib/utils"
 
 export function Navbar() {
-    const [isOpen, setIsOpen] = useState(false)
     const [scrolled, setScrolled] = useState(false)
     const location = useLocation()
 
@@ -18,93 +16,48 @@ export function Navbar() {
         return () => window.removeEventListener("scroll", handleScroll)
     }, [])
 
-    // Close mobile menu on route change
-    useEffect(() => {
-        setIsOpen(false)
-    }, [location])
-
     const navLinks = [
-        { name: "Home", path: "/" },
-        { name: "Works", path: "/works" },
-        { name: "About", path: "/about" },
-        { name: "Services", path: "/services" },
-        { name: "Contact", path: "/contact" },
+        { name: "Home", path: "/", icon: Home },
+        { name: "About", path: "/about", icon: User },
+        { name: "Services", path: "/services", icon: Film },
+        { name: "Works", path: "/works", icon: Briefcase },
     ]
 
     return (
-        <header className="fixed top-0 left-0 right-0 z-50 flex justify-center p-4">
+        <header className="fixed top-0 left-0 right-0 z-50 flex justify-center p-6 pointer-events-none">
             <nav
                 className={cn(
-                    "flex items-center justify-between w-full max-w-5xl rounded-full px-6 py-3 transition-all duration-300",
-                    scrolled || isOpen
-                        ? "bg-white/80 backdrop-blur-md shadow-sm border border-black/5"
-                        : "bg-transparent"
+                    "pointer-events-auto flex items-center justify-between gap-2 px-2 py-2 transition-all duration-300",
+                    "bg-[#F0F0E6]/80 backdrop-blur-md shadow-sm border border-primary/5 rounded-full"
                 )}
             >
-                {/* Logo */}
-                <Link to="/" className="text-xl font-bold tracking-tight z-50 relative">
-                    BRAYDEN<span className="text-accent">.</span>
-                </Link>
+                <div className="flex items-center gap-1">
+                    <div className="w-10 h-10 rounded-full flex items-center justify-center text-primary">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-6 h-6">
+                            <circle cx="12" cy="12" r="10" strokeDasharray="4 4" />
+                            <circle cx="12" cy="12" r="4" />
+                        </svg>
+                    </div>
+                </div>
 
-                {/* Desktop Navigation */}
-                <div className="hidden md:flex items-center gap-8">
+                <div className="flex items-center gap-1 mx-2">
                     {navLinks.map((link) => (
                         <Link
                             key={link.path}
                             to={link.path}
                             className={cn(
-                                "text-sm font-medium transition-colors hover:text-accent",
-                                location.pathname === link.path ? "text-primary" : "text-primary/60"
+                                "p-3 rounded-full transition-colors hover:bg-black/5 relative group",
+                                location.pathname === link.path ? "text-primary bg-white shadow-sm" : "text-primary/60"
                             )}
+                            title={link.name}
                         >
-                            {link.name}
+                            <link.icon className="w-5 h-5" />
+                            {location.pathname === link.path && (
+                                <motion.div layoutId="nav-pill" className="absolute inset-0 bg-white rounded-full z-[-1] shadow-sm" transition={{ type: "spring", bounce: 0.2, duration: 0.6 }} />
+                            )}
                         </Link>
                     ))}
                 </div>
-
-                {/* Desktop CTA */}
-                <div className="hidden md:block">
-                    <Button size="sm" className="gap-2 rounded-full">
-                        Book a call <ArrowRight className="w-4 h-4" />
-                    </Button>
-                </div>
-
-                {/* Mobile Menu Toggle */}
-                <button
-                    className="md:hidden z-50 p-1 relative"
-                    onClick={() => setIsOpen(!isOpen)}
-                >
-                    {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-                </button>
-
-                {/* Mobile Menu Overlay */}
-                <AnimatePresence>
-                    {isOpen && (
-                        <motion.div
-                            initial={{ opacity: 0, y: -20, scale: 0.95 }}
-                            animate={{ opacity: 1, y: 0, scale: 1 }}
-                            exit={{ opacity: 0, y: -20, scale: 0.95 }}
-                            transition={{ duration: 0.2 }}
-                            className="absolute top-16 left-0 right-0 mx-4 p-6 bg-white rounded-2xl shadow-xl border border-black/5 md:hidden flex flex-col gap-4"
-                        >
-                            {navLinks.map((link) => (
-                                <Link
-                                    key={link.path}
-                                    to={link.path}
-                                    className={cn(
-                                        "text-lg font-medium py-2 border-b border-gray-100 last:border-0",
-                                        location.pathname === link.path ? "text-accent" : "text-primary"
-                                    )}
-                                >
-                                    {link.name}
-                                </Link>
-                            ))}
-                            <Button className="w-full justify-center mt-2 rounded-full">
-                                Book a call
-                            </Button>
-                        </motion.div>
-                    )}
-                </AnimatePresence>
             </nav>
         </header>
     )

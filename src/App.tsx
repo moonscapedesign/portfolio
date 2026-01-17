@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom"
+import { AnimatePresence } from "framer-motion"
 import { useEffect } from "react"
 import { Navbar } from "./components/layout/Navbar"
 import { Footer } from "./components/layout/Footer"
@@ -19,19 +20,29 @@ function ScrollToTop() {
     return null
 }
 
+function AnimatedRoutes() {
+    const location = useLocation()
+
+    return (
+        <AnimatePresence mode="wait">
+            <Routes location={location} key={location.pathname}>
+                <Route path="/" element={<Home />} />
+                <Route path="/works" element={<Works />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/services" element={<Services />} />
+                <Route path="/contact" element={<Contact />} />
+            </Routes>
+        </AnimatePresence>
+    )
+}
+
 function Layout() {
     return (
         <div className="min-h-screen flex flex-col bg-background font-sans">
             <ScrollToTop />
             <Navbar />
             <div className="flex-grow">
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/works" element={<Works />} />
-                    <Route path="/about" element={<About />} />
-                    <Route path="/services" element={<Services />} />
-                    <Route path="/contact" element={<Contact />} />
-                </Routes>
+                <AnimatedRoutes />
             </div>
             <Footer />
         </div>

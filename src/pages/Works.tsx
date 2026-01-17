@@ -1,65 +1,94 @@
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "../components/ui/card"
-import { Button } from "../components/ui/button"
+import { useRef } from "react"
+import { motion, useScroll, useTransform } from "framer-motion"
 import { ArrowUpRight } from "lucide-react"
 
 const projects = [
     {
         title: "E-Commerce Rebrand",
         category: "Design & Development",
-        description: "Complete overhaul of a fashion retailer's online presence, resulting in a 40% increase in conversions.",
-        image: "bg-orange-100"
+        year: "2025",
+        image: "https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?q=80&w=1000&auto=format&fit=crop",
+        color: "bg-[#FFD4B8]"
     },
     {
         title: "Fintech Dashboard",
         category: "Product Design",
-        description: "Simplifying complex financial data for everyday users through intuitive UI design.",
-        image: "bg-blue-100"
+        year: "2024",
+        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop",
+        color: "bg-[#B8D4FF]"
     },
     {
         title: "Travel App",
         category: "Mobile App",
-        description: "A seamless booking experience for modern travelers, featured in the App Store.",
-        image: "bg-green-100"
+        year: "2024",
+        image: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=1000&auto=format&fit=crop",
+        color: "bg-[#C5FFB8]"
     },
     {
         title: "AI Marketing Tool",
         category: "SaaS Development",
-        description: "Leveraging generative AI to help marketers create content 10x faster.",
-        image: "bg-purple-100"
+        year: "2023",
+        image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1000&auto=format&fit=crop",
+        color: "bg-[#E2B8FF]"
     }
 ]
 
 export function Works() {
+    const containerRef = useRef(null)
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start start", "end end"]
+    })
+
     return (
-        <div className="pt-32 pb-20 px-6 max-w-6xl mx-auto">
-            <div className="mb-16">
-                <h1 className="text-5xl md:text-7xl font-bold mb-6">Selected Works</h1>
-                <p className="text-xl text-gray-500 max-w-2xl">A collection of projects that I've worked on recently.</p>
+        <div ref={containerRef} className="min-h-screen pt-32 pb-20 px-6 bg-[#F0F0E6]">
+            <div className="max-w-6xl mx-auto mb-20">
+                <motion.h1
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="text-6xl md:text-8xl font-bold tracking-tight text-[#1A1A1A] mb-8"
+                >
+                    Selected<br />
+                    <span className="text-[#7B61FF]">Works.</span>
+                </motion.h1>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="flex flex-col gap-24 max-w-6xl mx-auto">
                 {projects.map((project, index) => (
-                    <Card key={index} className="group overflow-hidden border-none shadow-none bg-transparent">
-                        <div className={`aspect-[4/3] ${project.image} rounded-3xl mb-6 overflow-hidden relative`}>
-                            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300" />
-                            <Button
-                                variant="secondary"
-                                size="icon"
-                                className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full"
-                            >
-                                <ArrowUpRight className="w-5 h-5" />
-                            </Button>
+                    <motion.div
+                        key={index}
+                        initial={{ opacity: 0, y: 40 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: "-10%" }}
+                        transition={{ duration: 0.6 }}
+                        className="group cursor-pointer"
+                    >
+                        {/* Project Image Container */}
+                        <div className={`relative aspect-[16/9] md:aspect-[2/1] overflow-hidden rounded-[2rem] ${project.color} mb-8`}>
+                            <img
+                                src={project.image}
+                                alt={project.title}
+                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 mix-blend-multiply grayscale group-hover:grayscale-0"
+                            />
+                            <div className="absolute top-6 right-6 w-16 h-16 bg-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 scale-50 group-hover:scale-100 shadow-xl">
+                                <ArrowUpRight className="w-8 h-8 text-[#1A1A1A]" />
+                            </div>
                         </div>
-                        <CardHeader className="p-0 mb-2">
-                            <span className="text-sm font-medium text-accent mb-2">{project.category}</span>
-                            <CardTitle className="text-2xl md:text-3xl">{project.title}</CardTitle>
-                        </CardHeader>
-                        <CardContent className="p-0">
-                            <CardDescription className="text-base text-gray-600">
-                                {project.description}
-                            </CardDescription>
-                        </CardContent>
-                    </Card>
+
+                        {/* Project Info */}
+                        <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-[#1A1A1A]/10 pb-8">
+                            <div>
+                                <div className="flex items-center gap-4 text-sm font-medium text-[#7B61FF] mb-2">
+                                    <span className="px-3 py-1 rounded-full border border-[#7B61FF]/20 bg-white/50">{project.category}</span>
+                                    <span>{project.year}</span>
+                                </div>
+                                <h2 className="text-4xl font-bold text-[#1A1A1A] group-hover:text-[#7B61FF] transition-colors">{project.title}</h2>
+                            </div>
+                            <div className="hidden md:block opacity-0 group-hover:opacity-60 transition-opacity">
+                                See Case Study
+                            </div>
+                        </div>
+                    </motion.div>
                 ))}
             </div>
         </div>
