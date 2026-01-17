@@ -1,7 +1,49 @@
-import { ComponentExample } from "@/components/component-example";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom"
+import { useEffect } from "react"
+import { Navbar } from "./components/layout/Navbar"
+import { Footer } from "./components/layout/Footer"
+import { Home } from "./pages/Home"
+import { Works } from "./pages/Works"
+import { About } from "./pages/About"
+import { Contact } from "./pages/Contact"
+import { Services } from "./pages/Services"
 
-export function App() {
-return <ComponentExample />;
+
+function ScrollToTop() {
+    const { pathname } = useLocation()
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [pathname])
+
+    return null
 }
 
-export default App;
+function Layout() {
+    return (
+        <div className="min-h-screen flex flex-col bg-background font-sans">
+            <ScrollToTop />
+            <Navbar />
+            <div className="flex-grow">
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/works" element={<Works />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/services" element={<Services />} />
+                    <Route path="/contact" element={<Contact />} />
+                </Routes>
+            </div>
+            <Footer />
+        </div>
+    )
+}
+
+function App() {
+    return (
+        <Router>
+            <Layout />
+        </Router>
+    )
+}
+
+export default App
