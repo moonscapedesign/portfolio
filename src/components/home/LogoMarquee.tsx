@@ -5,7 +5,7 @@ export function LogoMarquee() {
 
     return (
         <section
-            className="py-12 border-y border-gray-200 bg-white overflow-hidden"
+            className="py-12 bg-transparent overflow-hidden opacity-40 mix-blend-multiply"
             aria-label="Trusted by companies"
         >
             <div className="flex">

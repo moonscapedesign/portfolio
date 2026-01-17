@@ -5,6 +5,8 @@ import { Navbar } from "./components/layout/Navbar"
 import { Footer } from "./components/layout/Footer"
 import { Home } from "./pages/Home"
 import { Works } from "./pages/Works"
+import { CaseStudy } from "./pages/CaseStudy"
+import { Gallery } from "./pages/Gallery"
 import { About } from "./pages/About"
 import { Contact } from "./pages/Contact"
 import { Services } from "./pages/Services"
@@ -28,6 +30,8 @@ function AnimatedRoutes() {
             <Routes location={location} key={location.pathname}>
                 <Route path="/" element={<Home />} />
                 <Route path="/works" element={<Works />} />
+                <Route path="/works/:id" element={<CaseStudy />} />
+                <Route path="/gallery" element={<Gallery />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/services" element={<Services />} />
                 <Route path="/contact" element={<Contact />} />
