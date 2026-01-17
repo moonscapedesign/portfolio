@@ -1,58 +1,53 @@
 import { Link, useLocation } from "react-router-dom"
-import { motion } from "framer-motion"
-import { Home, User, Briefcase, Film, Image } from "lucide-react"
 import { cn } from "../../lib/utils"
+import { Button } from "../ui/button"
 
 export function Navbar() {
     const location = useLocation()
 
     const navLinks = [
-        { name: "Home", path: "/", icon: Home },
-        { name: "About", path: "/about", icon: User },
-        { name: "Services", path: "/services", icon: Film },
-        { name: "Works", path: "/works", icon: Briefcase },
-        { name: "Gallery", path: "/gallery", icon: Image },
+        { name: "home", path: "/" },
+        { name: "about", path: "/about" },
+        { name: "works", path: "/works" },
+        { name: "services", path: "/services" },
+        { name: "contact", path: "/contact" },
     ]
 
     return (
-        <header className="fixed top-0 left-0 right-0 z-50 flex justify-center p-6 pointer-events-none">
-            <nav
-                className={cn(
-                    "pointer-events-auto flex items-center justify-between gap-2 px-2 py-2 transition-all duration-300",
-                    "bg-[#F0F0E6]/90 backdrop-blur-md shadow-sm border border-primary/5 rounded-full",
-                    "max-w-[90vw] overflow-x-auto no-scrollbar" // Mobile responsiveness
-                )}
-            >
-                <div className="flex items-center gap-1">
-                    <div className="w-12 h-12 rounded-full flex items-center justify-center text-primary" aria-hidden="true">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-6 h-6">
-                            <circle cx="12" cy="12" r="10" strokeDasharray="4 4" />
-                            <circle cx="12" cy="12" r="4" />
+        <header className="fixed top-0 left-0 right-0 z-50 bg-[#F0F0E6]">
+            <div className="max-w-7xl mx-auto px-4 md:px-8 py-3 flex items-center justify-between">
+                {/* Logo */}
+                <Link to="/" className="flex items-center">
+                    <div className="w-7 h-7 border border-[#1A1A1A]/30 rounded-full flex items-center justify-center">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-[#1A1A1A]">
+                            <circle cx="12" cy="12" r="8" strokeDasharray="3 3" />
                         </svg>
                     </div>
-                </div>
+                </Link>
 
-                <div className="flex items-center gap-1 mx-2">
+                {/* Nav Links */}
+                <nav className="hidden md:flex items-center gap-6">
                     {navLinks.map((link) => (
                         <Link
                             key={link.path}
                             to={link.path}
                             className={cn(
-                                "p-3 md:p-4 rounded-full transition-colors hover:bg-black/5 relative group min-w-[48px] min-h-[48px] flex items-center justify-center", // Enhanced touch target
-                                location.pathname === link.path ? "text-primary bg-white shadow-sm" : "text-primary/60"
+                                "text-[11px] font-medium transition-colors",
+                                location.pathname === link.path 
+                                    ? "text-[#1A1A1A]" 
+                                    : "text-[#1A1A1A]/50 hover:text-[#1A1A1A]"
                             )}
-                            title={link.name}
-                            aria-label={link.name}
-                            role="menuitem"
                         >
-                            <link.icon className="w-5 h-5 md:w-6 md:h-6" />
-                            {location.pathname === link.path && (
-                                <motion.div layoutId="nav-pill" className="absolute inset-0 bg-white rounded-full z-[-1] shadow-sm" transition={{ type: "spring", bounce: 0.2, duration: 0.6 }} />
-                            )}
+                            {link.name}
                         </Link>
                     ))}
-                </div>
-            </nav>
+                </nav>
+
+                {/* CTA Button */}
+                <Button className="bg-[#1A1A1A] hover:bg-[#333] text-white rounded-none h-7 px-4 text-[10px] font-semibold uppercase tracking-wide">
+                    book a call
+                </Button>
+            </div>
         </header>
     )
 }

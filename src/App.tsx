@@ -41,6 +41,9 @@ function AnimatedRoutes() {
 }
 
 function Layout() {
+    const location = useLocation()
+    const isHomePage = location.pathname === "/"
+
     return (
         <div className="min-h-screen flex flex-col bg-background font-sans">
             <ScrollToTop />
@@ -48,7 +51,7 @@ function Layout() {
             <div className="flex-grow">
                 <AnimatedRoutes />
             </div>
-            <Footer />
+            {!isHomePage && <Footer />}
         </div>
     )
 }

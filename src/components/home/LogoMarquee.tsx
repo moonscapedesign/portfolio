@@ -1,24 +1,23 @@
 export function LogoMarquee() {
     const logos = [
-        "ACME", "Apex", "Brilliance", "Command", "Echo", "Flux", "Gravity", "Horizon"
+        { icon: "◇", name: "Logoipsum" },
+        { icon: "▽", name: "Logoipsum" },
+        { icon: "☆", name: "Logoipsum" },
+        { icon: "◎", name: "LOGOIPSUM" },
+        { icon: "△", name: "Logoipsum" },
+        { icon: "⬡", name: "Logoipsum" },
+        { icon: "◈", name: "LOGOIPSUM" },
+        { icon: "✦", name: "Logoipsum" },
     ]
 
     return (
-        <section
-            className="py-12 bg-transparent overflow-hidden opacity-40 mix-blend-multiply"
-            aria-label="Trusted by companies"
-        >
+        <section className="py-4 bg-[#F0F0E6] overflow-hidden border-y border-[#1A1A1A]/10">
             <div className="flex">
                 <div className="flex animate-scroll whitespace-nowrap">
-                    {logos.map((logo, index) => (
-                        <div key={`logo-1-${index}`} className="mx-8 md:mx-16 flex items-center">
-                            <span className="text-2xl font-bold text-gray-300 font-mono tracking-wider">{logo}</span>
-                        </div>
-                    ))}
-                    {/* Duplicate set for seamless scrolling - marked as decorative */}
-                    {logos.map((logo, index) => (
-                        <div key={`logo-2-${index}`} className="mx-8 md:mx-16 flex items-center" aria-hidden="true">
-                            <span className="text-2xl font-bold text-gray-300 font-mono tracking-wider">{logo}</span>
+                    {[...logos, ...logos].map((logo, index) => (
+                        <div key={index} className="mx-6 md:mx-10 flex items-center gap-2">
+                            <span className="text-lg text-[#1A1A1A]/70">{logo.icon}</span>
+                            <span className="text-sm font-medium text-[#1A1A1A]/70 tracking-wide">{logo.name}</span>
                         </div>
                     ))}
                 </div>
