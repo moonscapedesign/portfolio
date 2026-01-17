@@ -52,7 +52,7 @@ export function Hero() {
                             
                             <div className="relative z-10 ml-auto w-full max-w-[280px]">
                                 <img
-                                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop"
+                                    src="/src/assets/portrait.png"
                                     alt="Bridie - Visual Communicator"
                                     className="w-full h-auto object-cover grayscale"
                                 />

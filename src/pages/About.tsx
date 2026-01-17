@@ -13,7 +13,7 @@ export function About() {
                     className="w-full md:w-1/3 aspect-[3/4] rounded-t-full bg-gray-300 overflow-hidden relative grayscale"
                 >
                     <img
-                        src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000&auto=format&fit=crop"
+                        src="/src/assets/portrait.png"
                         alt="Portrait"
                         className="w-full h-full object-cover"
                     />
