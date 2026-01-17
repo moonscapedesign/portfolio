@@ -6,7 +6,7 @@ import { Link } from "react-router-dom"
 export function Hero() {
     return (
         <section className="relative pt-28 md:pt-32 pb-0 overflow-hidden bg-[#0A0A0A]">
-            <div className="px-6 md:px-12 lg:px-16">
+            <div className="px-6 md:px-12 lg:px-16 max-w-6xl mx-auto">
                 <div className="flex flex-col lg:flex-row items-end gap-8 lg:gap-12">
                     {/* Left Column: Text */}
                     <div className="w-full lg:flex-1 pb-12 lg:pb-16 z-20 lg:max-w-xl">
@@ -40,7 +40,7 @@ export function Hero() {
                         </motion.div>
                     </div>
 
-                    {/* Right Column: Image with purple background */}
+                    {/* Right Column: Image with background */}
                     <div className="w-full lg:w-[32%] relative">
                         <motion.div
                             initial={{ opacity: 0, x: 20 }}
@@ -48,10 +48,8 @@ export function Hero() {
                             transition={{ duration: 0.6, delay: 0.2 }}
                             className="relative"
                         >
-                            {/* Purple background */}
                             <div className="absolute top-0 right-0 bottom-0 w-[90%] bg-[#1A1A1A]" />
                             
-                            {/* Person Image */}
                             <div className="relative z-10 ml-auto w-full max-w-[280px]">
                                 <img
                                     src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop"
@@ -60,7 +58,6 @@ export function Hero() {
                                 />
                             </div>
 
-                            {/* Floating Card */}
                             <motion.div
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
