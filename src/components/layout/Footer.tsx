@@ -21,7 +21,7 @@ export function Footer() {
 
                 {/* Bottom Section */}
                 <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-sm text-white/50">
-                    <p>© 2026 MoonScape Designs. All rights reserved.</p>
+                    <p>© 2026 Moonscape Designs. All rights reserved.</p>
                     <div className="flex gap-6">
                         <Link to="#" className="hover:text-white transition-colors">Twitter</Link>
                         <a href="https://www.linkedin.com/in/bridiemoon03/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">LinkedIn</a>

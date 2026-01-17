@@ -39,7 +39,7 @@ export function Contact() {
                                 </div>
                                 <div>
                                     <p className="text-sm text-gray-500">Call me</p>
-                                    <p className="text-lg font-medium">+61 400 123 456</p>
+                                    <p className="text-lg font-medium">+61 400 000 000</p>
                                 </div>
                             </div>
 
@@ -49,7 +49,7 @@ export function Contact() {
                                 </div>
                                 <div>
                                     <p className="text-sm text-gray-500">Located in</p>
-                                    <p className="text-lg font-medium">Sydney, Australia</p>
+                                    <p className="text-lg font-medium">Yarra Valley, Victoria</p>
                                 </div>
                             </div>
                         </div>
@@ -65,7 +65,7 @@ export function Contact() {
                             <div className="grid sm:grid-cols-2 gap-4">
                                 <div className="space-y-2">
                                     <label htmlFor="name" className="text-sm font-medium text-gray-500">Name</label>
-                                    <Input id="name" placeholder="John Doe" className="bg-[#F0F0E6] border-transparent h-12 rounded-xl focus:bg-white transition-colors" />
+                                    <Input id="name" placeholder="Jane Doe" className="bg-[#F0F0E6] border-transparent h-12 rounded-xl focus:bg-white transition-colors" />
                                 </div>
                                 <div className="space-y-2">
                                     <label htmlFor="email" className="text-sm font-medium text-gray-500">Email</label>

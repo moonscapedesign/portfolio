@@ -28,12 +28,14 @@ export function About() {
                         More than<br />just <span className="text-[#7B61FF]">Design.</span>
                     </h1>
                     <p className="text-xl text-[#1A1A1A]/70 max-w-xl leading-relaxed mb-8">
-                        I'm a multidisciplinary designer who believes that great products are built at the intersection of design, technology, and human psychology.
+                        I’m a visual communicator based in the beautiful Yarra Valley, Victoria. I believe that great design is about problem-solving and bringing ideas to life.
                     </p>
                     <div className="flex gap-4">
-                        <Button className="h-12 px-8 bg-[#1A1A1A] text-white hover:bg-[#7B61FF] rounded-none">
-                            Download CV
-                        </Button>
+                        <a href="/BridieMoon_Resume.pdf" download="BridieMoon_Resume.pdf">
+                            <Button className="h-12 px-8 bg-[#1A1A1A] text-white hover:bg-[#7B61FF] rounded-none">
+                                Download CV
+                            </Button>
+                        </a>
                     </div>
                 </motion.div>
             </section>
@@ -44,19 +46,19 @@ export function About() {
                     <div>
                         <h3 className="text-sm font-bold uppercase tracking-widest text-[#7B61FF] mb-6">The Story</h3>
                         <p className="text-lg leading-relaxed text-gray-600 mb-6">
-                            My journey started with a love for fine arts, which eventually evolved into a passion for digital interfaces. I realized that the web is the ultimate canvas—dynamic, interactive, and accessible to everyone.
+                            I’ve had a passion for all things art and design since I was very young, often planning out and crafting small ideas and projects. This led me to heavily study art and design throughout my schooling, eventually landing me a scholarship into Deakin University where I completed my Bachelors in Visual Communication in 2024.
                         </p>
                         <p className="text-lg leading-relaxed text-gray-600">
-                            Over the last 5 years, I've helped startups raise funding, enterprises streamline their tools, and automated businesses to grow.
+                            Beyond my studies, I enjoy the outdoors, family, friends, and have a huge love for animals. Growing up on land with horses has taught me to enjoy the little moments and be adjustable to my environment. I enjoy learning new things and have a strong desire to consistently learn—even leading me to become a training chainsaw mechanic!
                         </p>
                     </div>
                     <div>
                         <h3 className="text-sm font-bold uppercase tracking-widest text-[#7B61FF] mb-6">Experience</h3>
                         <ul className="space-y-6">
                             {[
-                                { role: "Senior Product Designer", company: "TechFlow", year: "2023 - Present" },
-                                { role: "UI/UX Designer", company: "Creative Agency", year: "2021 - 2023" },
-                                { role: "Frontend Developer", company: "Startlab", year: "2019 - 2021" }
+                                { role: "Visual Communicator", company: "Moonscape Designs", year: "2024 - Present" },
+                                { role: "Design & Social Media Lead", company: "Local Industry", year: "2023 - Present" },
+                                { role: "Visual Communication Student", company: "Deakin University", year: "2021 - 2024" }
                             ].map((job, i) => (
                                 <li key={i} className="flex justify-between items-center border-b border-gray-100 pb-4">
                                     <div>

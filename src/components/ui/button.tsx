@@ -1,4 +1,5 @@
 import * as React from "react"
+import { Slot } from "@radix-ui/react-slot"
 import { cn } from "../../lib/utils"
 import { motion, type HTMLMotionProps } from "framer-motion"
 
@@ -44,17 +45,22 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 type CombinedButtonProps = ButtonProps & HTMLMotionProps<"button">
 
 const Button = React.forwardRef<HTMLButtonElement, CombinedButtonProps>(
-  ({ className, variant = 'primary', size = 'default', ...props }, ref) => {
+  ({ className, variant = 'primary', size = 'default', asChild = false, ...props }, ref) => {
 
     // Normalize variant/size if passed as "default" (common in Shadcn) to match our map keys
     const finalVariant = variant || 'default'
     const finalSize = size || 'default'
 
+    const Comp = asChild ? Slot : motion.button
+    const motionProps = asChild ? {} : {
+      whileHover: { scale: 1.02 },
+      whileTap: { scale: 0.98 }
+    }
+
     return (
-      <motion.button
+      <Comp
         ref={ref}
-        whileHover={{ scale: 1.02 }}
-        whileTap={{ scale: 0.98 }}
+        {...motionProps}
         className={cn(
           buttonVariants({ variant: finalVariant, size: finalSize, className })
         )}
