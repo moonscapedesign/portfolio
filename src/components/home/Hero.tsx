@@ -1,15 +1,12 @@
 import { Button } from "../ui/button"
 import { MoveUpRight } from "lucide-react"
 import { motion } from "framer-motion"
-import { LogoMarquee } from "./LogoMarquee"
 
 export function Hero() {
     return (
-        <section className="relative min-h-screen flex flex-col md:flex-row overflow-hidden bg-[#F0F0E6]">
-
+        <section className="relative min-h-screen flex flex-col overflow-hidden bg-[#F0F0E6]">
             {/* Main Content Container */}
-            <div className="container mx-auto flex flex-col md:flex-row w-full z-10 px-6 md:px-12 relative">
-
+            <div className="container mx-auto flex flex-col md:flex-row w-full z-10 px-6 md:px-12 relative flex-1">
                 {/* Left Column: Text */}
                 <div className="w-full md:w-1/2 flex flex-col justify-center pt-32 md:pt-0 z-20">
                     <motion.div
@@ -45,7 +42,7 @@ export function Hero() {
                             </div>
                         </div>
 
-                        <div className="mt-8 flex items-center gap-2 text-sm font-bold tracking-tight text-[#1A1A1A]/60">
+                        <div className="mt-4 flex items-center gap-2 text-sm font-bold tracking-tight text-[#1A1A1A]/60">
                             <span>designs you'll</span>
                             <span className="text-red-500 text-lg">♥</span>
                             <span>, guaranteed.</span>
@@ -54,9 +51,8 @@ export function Hero() {
                 </div>
 
                 {/* Right Column: Image & Abstract Shape */}
-                <div className="w-full md:w-1/2 relative min-h-[500px] md:min-h-screen flex items-end justify-center md:justify-end pb-0">
-
-                    {/* Purple Wireframe Shape (Loose scribbles) */}
+                <div className="w-full md:w-1/2 relative min-h-[500px] md:min-h-[80vh] flex items-end justify-center md:justify-end pb-0">
+                    {/* Purple Wireframe Shape */}
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] pointer-events-none opacity-100 mix-blend-multiply z-0">
                         <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" className="w-full h-full text-[#7B61FF] animate-[spin_60s_linear_infinite]">
                             <path fill="none" stroke="currentColor" strokeWidth="1.5" d="M187.3,86.4C229.4,94.9,261.2,143.2,263.3,190.4C265.4,237.6,237.8,283.6,197.6,302.3C157.4,321,104.6,312.4,72.4,277.6C40.2,242.8,28.6,181.8,45.8,136.6C63,91.4,109,62,154.2,56.1C165.5,54.6,176.8,84.3,187.3,86.4Z" transform="scale(1.2) translate(-20, -20)" />
@@ -64,8 +60,8 @@ export function Hero() {
                         </svg>
                     </div>
 
-                    {/* Person Image - Smaller (50% width on Desktop) */}
-                    <div className="relative z-10 w-[80%] md:w-[50%] mr-0 md:mr-10 aspect-[3/4] overflow-hidden">
+                    {/* Person Image */}
+                    <div className="relative z-10 w-[80%] md:w-[55%] mr-0 md:mr-10 aspect-[3/4] overflow-hidden">
                         <img
                             src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000&auto=format&fit=crop"
                             alt="Matt - Product Designer"
@@ -77,7 +73,7 @@ export function Hero() {
                         />
                     </div>
 
-                    {/* Floating "Let's discuss" Card - Overlapping the image */}
+                    {/* Floating "Let's discuss" Card */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -85,11 +81,9 @@ export function Hero() {
                         className="absolute bottom-32 -left-6 md:left-auto md:-left-12 z-20"
                     >
                         <div className="bg-[#1A1A1A] p-6 w-[260px] shadow-2xl relative rotate-2 hover:rotate-0 transition-transform duration-300">
-                            {/* Arrow decoration */}
                             <div className="absolute -top-3 -right-3 bg-white rounded-full p-2 border-2 border-[#1A1A1A] z-30">
                                 <MoveUpRight className="w-4 h-4 text-black" />
                             </div>
-
                             <h3 className="text-white text-lg font-bold leading-tight mb-4">
                                 Let's discuss upgrades, free of charge!
                             </h3>
@@ -101,24 +95,42 @@ export function Hero() {
                 </div>
             </div>
 
-            {/* Bottom Section Container: Purple Box & Logos */}
-            <div className="relative w-full z-10 pb-0 mt-auto">
-                {/* Logo Marquee Strip (Background layer in bottom area) */}
-                <div className="w-full bg-transparent absolute bottom-8 left-0 right-0 z-0 opacity-40 grayscale mix-blend-multiply pointer-events-none">
-                    <LogoMarquee />
-                </div>
-
-                {/* Purple Box (Overlapping Logos) */}
-                <div className="relative w-full md:w-[35%] bg-[#7B61FF] p-8 md:p-12 text-white z-10">
-                    <h2 className="text-2xl md:text-3xl font-bold leading-tight mb-4">
-                        We make sure their first impression is memorable.
-                    </h2>
-                    <p className="text-white/80 text-sm mb-6 max-w-xs">
-                        We've worked with hundreds of startups and established businesses in creating memorable digital experiences.
-                    </p>
-                    <Button variant="outline" className="border-white text-white hover:bg-white hover:text-[#7B61FF] rounded-none px-6 h-10 font-medium">
-                        book a free call
-                    </Button>
+            {/* Bottom Section: Purple Box */}
+            <div className="relative w-full z-10">
+                <div className="flex flex-col md:flex-row">
+                    {/* Purple Box */}
+                    <div className="w-full md:w-[40%] bg-[#7B61FF] p-8 md:p-12 text-white">
+                        <h2 className="text-2xl md:text-3xl font-bold leading-tight mb-4">
+                            We make sure their first impression is memorable.
+                        </h2>
+                        <p className="text-white/80 text-sm mb-6 max-w-sm">
+                            We've worked with hundreds of startups and established businesses in creating memorable digital experiences that capture the eyes of many.
+                        </p>
+                        <Button variant="outline" className="border-white text-white hover:bg-white hover:text-[#7B61FF] rounded-none px-6 h-10 font-medium">
+                            book a free call
+                        </Button>
+                    </div>
+                    {/* Right side - can add project thumbnails or leave empty */}
+                    <div className="hidden md:flex w-[60%] bg-[#E8E8DC] items-center justify-center gap-4 p-8 overflow-hidden">
+                        <motion.div 
+                            className="flex gap-4"
+                            animate={{ x: [0, -400] }}
+                            transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                        >
+                            {[1, 2, 3, 4, 1, 2, 3, 4].map((_, index) => (
+                                <div key={index} className="w-[180px] h-[120px] bg-white/50 flex-shrink-0 overflow-hidden">
+                                    <img 
+                                        src={index % 2 === 0 
+                                            ? "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=400&auto=format&fit=crop"
+                                            : "https://images.unsplash.com/photo-1634942537034-2531766767d1?q=80&w=400&auto=format&fit=crop"
+                                        }
+                                        alt="Project preview"
+                                        className="w-full h-full object-cover"
+                                    />
+                                </div>
+                            ))}
+                        </motion.div>
+                    </div>
                 </div>
             </div>
         </section>

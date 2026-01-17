@@ -11,7 +11,7 @@ export function Navbar() {
         { name: "About", path: "/about", icon: User },
         { name: "Services", path: "/services", icon: Film },
         { name: "Works", path: "/works", icon: Briefcase },
-        { name: "Gallery", path: "/gallery", icon: Film }, // Re-using Film icon or similar
+        { name: "Gallery", path: "/gallery", icon: Image },
     ]
 
     return (
